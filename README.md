@@ -1,3 +1,5 @@
+Sign Up With Stepper App
+
 This project is about user registration using stepper. The first step is to enter the user's email address. The second step is to receive the verification code that sent to the email in the first step. If the codes match, then the last step is to enter the user name and password. After completing all steps, you will be taken to the list of registered users page.
 
 Thank you.
