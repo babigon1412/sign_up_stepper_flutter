@@ -4,7 +4,6 @@ Thank you.
 
 ---------------------------------------------------------------------------------------------------------------------------
 
-![img1](https://user-images.githubusercontent.com/84733676/193442621-780da4fd-20f0-49ca-b199-3fac1081df94.png)
+![img1](https://user-images.githubusercontent.com/84733676/193442864-891c3eb7-297c-490f-a8e5-7db0a50f6b69.png)
 
-
-![img2](https://user-images.githubusercontent.com/84733676/193442627-a66e2538-c4a6-41f8-bc22-4839fbcf9a8a.png)
+![img2](https://user-images.githubusercontent.com/84733676/193442868-2ab5e954-f867-400a-8421-89cc07ba9a33.png)
