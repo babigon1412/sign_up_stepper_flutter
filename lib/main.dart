@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
         title: 'Stepper App',
         theme: ThemeData(primarySwatch: mycolor),
         debugShowCheckedModeBanner: false,
-        // home: const ProfilePage(),
         home: const HomePage(),
       ),
     );
