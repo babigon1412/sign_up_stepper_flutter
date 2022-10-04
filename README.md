@@ -1,16 +1,11 @@
-# stepper_flutter
+Sign Up With Stepper App
 
-A new Flutter project.
+This project is about user registration using stepper. The first step is to enter the user's email address. The second step is to receive the verification code that sent to the email in the first step. If the codes match, then the last step is to enter the user name and password. After completing all steps, you will be taken to the list of registered users page.
 
-## Getting Started
+Thank you.
 
-This project is a starting point for a Flutter application.
+---------------------------------------------------------------------------------------------------------------------------
 
-A few resources to get you started if this is your first Flutter project:
+![img1](https://user-images.githubusercontent.com/84733676/193442864-891c3eb7-297c-490f-a8e5-7db0a50f6b69.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![img2](https://user-images.githubusercontent.com/84733676/193442868-2ab5e954-f867-400a-8421-89cc07ba9a33.png)
