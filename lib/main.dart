@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stepper_flutter/pages/home_page.dart';
-import 'package:stepper_flutter/pages/users_page.dart';
+import 'package:stepper_flutter/pages/profile.dart';
 import 'package:stepper_flutter/providers/stepper_providers.dart';
 
 void main() {
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         title: 'Stepper App',
         theme: ThemeData(primarySwatch: mycolor),
         debugShowCheckedModeBanner: false,
+        // home: const ProfilePage(),
         home: const HomePage(),
       ),
     );

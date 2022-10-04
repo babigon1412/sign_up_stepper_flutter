@@ -20,11 +20,19 @@ class _UsersPageState extends State<UsersPage> {
         backgroundColor: AppColor.bgColor,
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: AppColor.textColor,
+          ),
+        ),
         title: Container(
           height: Dimensions.ten,
           width: Dimensions.ten * 10,
           padding: EdgeInsets.all(Dimensions.ten * 1.5),
-          margin: EdgeInsets.only(bottom: Dimensions.ten * 1.5),
           decoration: BoxDecoration(
             color: AppColor.buttonColor,
             borderRadius: BorderRadius.circular(Dimensions.ten * 2),

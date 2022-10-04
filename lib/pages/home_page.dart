@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:email_auth/email_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,7 @@ import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:stepper_flutter/models/stepper_models.dart';
-import 'package:stepper_flutter/pages/users_page.dart';
+import 'package:stepper_flutter/pages/profile.dart';
 import 'package:stepper_flutter/providers/stepper_providers.dart';
 import 'package:stepper_flutter/utils/app_colors.dart';
 import 'package:stepper_flutter/utils/dimensions.dart';
@@ -20,11 +22,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentStep = 0;
+  int second = 60;
   String initialEmail = '';
   String otpBox = '';
   bool isLoading = false;
   bool isDone = false;
   bool isMatch = false;
+  bool isError = false;
+
+  Timer? time;
 
   final _formEmail = GlobalKey<FormState>();
   final _formPassword = GlobalKey<FormState>();
@@ -53,6 +59,10 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _currentStep++;
         isLoading = false;
+
+        second = 60;
+        timerCountdown();
+
         shortEmail();
       });
     }
@@ -66,8 +76,36 @@ class _HomePageState extends State<HomePage> {
         _currentStep++;
         isLoading = false;
         isDone = false;
+        time?.cancel();
       });
     }
+  }
+
+  void timerCountdown() {
+    time = Timer.periodic(const Duration(seconds: 1), (_) {
+      setState(() {
+        if (second > 0) {
+          second--;
+        } else {
+          setText();
+          isError = true;
+          time?.cancel();
+        }
+      });
+    });
+  }
+
+  void setText() {
+    setState(() {
+      email = TextEditingController();
+      otpBox1 = TextEditingController();
+      otpBox2 = TextEditingController();
+      otpBox3 = TextEditingController();
+      otpBox4 = TextEditingController();
+      otpBox5 = TextEditingController();
+      otpBox6 = TextEditingController();
+      otpBox = '';
+    });
   }
 
   void shortEmail() {
@@ -245,7 +283,47 @@ class _HomePageState extends State<HomePage> {
                     fontSize: Dimensions.ten * 1.5,
                   ),
                 ),
-                SizedBox(height: Dimensions.ten * 6),
+                SizedBox(height: Dimensions.ten * 0.5),
+                Row(
+                  children: [
+                    Text(
+                      'and it\'ll be reset in  ',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: Dimensions.ten * 1.5,
+                      ),
+                    ),
+                    Text(
+                      second.toString(),
+                      style: TextStyle(
+                        color: AppColor.buttonColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Dimensions.ten * 1.5,
+                      ),
+                    ),
+                    Text(
+                      '  seconds.',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: Dimensions.ten * 1.5,
+                      ),
+                    ),
+                  ],
+                ),
+                isError
+                    ? SizedBox(height: Dimensions.ten)
+                    : const SizedBox.shrink(),
+                isError
+                    ? Text(
+                        'The times run out, you have to send the code a again.',
+                        style: TextStyle(
+                          color: AppColor.iconColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: Dimensions.ten * 1.5,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                SizedBox(height: Dimensions.ten * 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -552,8 +630,12 @@ class _HomePageState extends State<HomePage> {
                             Navigator.pushReplacement(
                               context,
                               CupertinoPageRoute(
-                                  builder: (context) => UsersPage()),
+                                  builder: (context) => const ProfilePage()),
                             );
+                            setState(() {
+                              second = 60;
+                              isError = false;
+                            });
                           }
                         }
                       },
@@ -582,9 +664,19 @@ class _HomePageState extends State<HomePage> {
               leading: IconButton(
                 onPressed: () {
                   if (_currentStep > 0) {
-                    setState(() {
-                      _currentStep--;
-                    });
+                    if (_currentStep == 2) {
+                      setState(() {
+                        setText();
+                        isError = false;
+                        _currentStep = 0;
+                      });
+                    } else {
+                      setState(() {
+                        setText();
+                        isError = false;
+                        _currentStep--;
+                      });
+                    }
                   }
                 },
                 icon: const Icon(

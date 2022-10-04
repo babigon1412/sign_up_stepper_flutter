@@ -4,6 +4,10 @@ import 'package:stepper_flutter/models/stepper_models.dart';
 class StepperProvider with ChangeNotifier {
   List<StepperModels> users = [
     StepperModels(
+        username: 'kim_jesoo',
+        password: 'Jesoo#001',
+        email: 'KimJesoo@gmail.com'),
+    StepperModels(
         username: 'User1', password: 'User1@0000', email: 'user1@gmail.com'),
     StepperModels(
         username: 'User2', password: 'User2@0000', email: 'user2@gmail.com'),
